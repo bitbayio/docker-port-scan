@@ -3,7 +3,7 @@
 doscan() {
 	echo "Port scan started"
 	outfile="/srv/www/$(date +%m-%d-%Y_%H:%M:%S).html"
-  nmap -oXsVA /tmp/scan.xml --stylesheet /usr/share/nmap/nmap.xsl -p${SCAN_PORTS} $HOST_LIST
+  nmap -oX /tmp/scan.xml --stylesheet /usr/share/nmap/nmap.xsl -p${SCAN_PORTS} $HOST_LIST
 	xsltproc /tmp/scan.xml -o $outfile
 	echo "Report generated at $outfile"
 }
